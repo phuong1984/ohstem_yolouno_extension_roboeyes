@@ -1,0 +1,17 @@
+{
+    "name": "ROBOEYES",
+    "description": "Thư viện khối lệnh để tạo mắt cho robo trên màn hình oled",
+    "libs": [
+        "ssd1306.py",
+        "roboeyes.py"
+    ],
+    "blocks": [
+        "definition.js"
+    ],
+    "toolbox": "toolbox.xml",
+    "languages": {
+        "en": "languages/en.js",
+        "vn": "languages/vn.js"
+    },
+    "poster": "roboeyes.jpg"
+}
