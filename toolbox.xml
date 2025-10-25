@@ -2,35 +2,63 @@
   <category name="ROBO EYES" colour="#5d2c91" icon="tv">
     <sep gap="10"></sep>
     <label text="Khởi tạo" web-class="blockLabelStyle"></label>
-	<block type="roboeyes_create">
+    <block type="roboeyes_create">
       <value name="WIDTH"><shadow type="math_number"><field name="NUM">128</field></shadow></value>
       <value name="HEIGHT"><shadow type="math_number"><field name="NUM">64</field></shadow></value>
       <value name="FRAMERATE"><shadow type="math_number"><field name="NUM">50</field></shadow></value>
     </block>
 	
-	<sep gap="10"></sep>
-    <label text="Thuộc tính" web-class="blockLabelStyle"></label>
-	<block type="roboeyes_set_width">
+    <sep gap="10"></sep>
+    <label text="Thuộc tính của mắt" web-class="blockLabelStyle"></label>
+    <block type="roboeyes_set_width">
       <value name="LEFT"><shadow type="math_number"><field name="NUM">36</field></shadow></value>
       <value name="RIGHT"><shadow type="math_number"><field name="NUM">36</field></shadow></value>
     </block>
-	<block type="roboeyes_set_height">
+    <block type="roboeyes_set_height">
       <value name="LEFT"><shadow type="math_number"><field name="NUM">36</field></shadow></value>
       <value name="RIGHT"><shadow type="math_number"><field name="NUM">36</field></shadow></value>
     </block>
-	<block type="roboeyes_set_border_radius">      
-      <value name="LEFT"><block type="math_number"><field name="NUM">8</field></block></value>
-      <value name="RIGHT"><block type="math_number"><field name="NUM">8</field></block></value>
+    <block type="roboeyes_set_border_radius">      
+      <value name="LEFT"><shadow type="math_number"><field name="NUM">8</field></shadow></value>
+      <value name="RIGHT"><shadow type="math_number"><field name="NUM">8</field></shadow></value>
+    </block>    
+    <block type="roboeyes_set_space_between">      
+      <value name="SPACE"><shadow type="math_number"><field name="NUM">10</field></shadow></value>
     </block>
     
-    <block type="roboeyes_set_space_between">      
-      <value name="SPACE"><block type="math_number"><field name="NUM">10</field></block></value>
+    <sep gap="10"></sep>
+    <label text="Biểu hiện khuôn mặt" web-class="blockLabelStyle"></label>
+    <block type="roboeyes_set_mood"></block>
+    <block type="roboeyes_set_position"></block>
+    <!--<block type="roboeyes_set_curiosity"></block> -->
+    <!--<block type="roboeyes_open"></block> -->
+    <block type="roboeyes_close"></block>
+    
+    <sep gap="10"></sep>
+    <label text="Chuyển động" web-class="blockLabelStyle"></label>
+    <block type="roboeyes_anim_confused"></block>    
+    <block type="roboeyes_anim_laugh"></block>
+    <block type="roboeyes_blink"></block>
+    <block type="roboeyes_set_h_flicker">
+      <value name="AMPLITUDE"><shadow type="math_number"><field name="NUM">2</field></shadow></value>
+    </block>
+    <block type="roboeyes_set_v_flicker">
+      <value name="AMPLITUDE"><shadow type="math_number"><field name="NUM">10</field></shadow></value>
+    </block>
+    
+    <sep gap="10"></sep>
+    <label text="Chuyển động tự động" web-class="blockLabelStyle"></label>
+    <block type="roboeyes_set_autoblinker">
+      <value name="INTERVAL"><shadow type="math_number"><field name="NUM">1</field></shadow></value>
+      <value name="VARIATION"><shadow type="math_number"><field name="NUM">4</field></shadow></value>
+    </block>    
+    <block type="roboeyes_set_idle_mode">
+      <value name="INTERVAL"><shadow type="math_number"><field name="NUM">1</field></shadow></value>
+      <value name="VARIATION"><shadow type="math_number"><field name="NUM">3</field></shadow></value>
     </block>
 	
-	<sep gap="10"></sep>
+    <sep gap="10"></sep>
     <label text="Hiển thị" web-class="blockLabelStyle"></label>
-	<block type="roboeyes_update">
-    </block>
-	
+    <block type="roboeyes_update"></block>	
   </category>
 </xml>
