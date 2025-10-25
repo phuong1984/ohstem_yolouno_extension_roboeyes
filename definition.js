@@ -126,6 +126,66 @@ Blockly.Blocks['roboeyes_update'] = {
   }
 };
 
+Blockly.Blocks['roboeyes_set_border_radius'] = {
+  init: function () {
+    this.jsonInit({
+	  "colour": '#5d2c91',
+	  "tooltip": "Thiết lập độ tròn của mắt",
+	  "message0": "Thiết lập độ tròn của mắt: trái %1 phải %2 %3",
+	  "args0": [
+	    {
+		  "type": "input_value",
+		  "name": "LEFT",
+		  "check": "Number"
+	    },
+	    {
+		  "type": "input_value",
+		  "name": "RIGHT",
+		  "check": "Number"
+	    },
+	    {
+		  type: "input_dummy"
+	    }
+	  ],
+	  "previousStatement": null,
+	  "nextStatement": null,
+	  
+	  "helpUrl": ""
+    });
+  }
+};
+
+Blockly.Python['roboeyes_set_border_radius'] = function (block) {
+  var left = Blockly.Python.valueToCode(block, 'LEFT', Blockly.Python.ORDER_ATOMIC);
+  var right = Blockly.Python.valueToCode(block, 'RIGHT', Blockly.Python.ORDER_ATOMIC);
+  return 'eyes.set_border_radius(' + left + ', ' + right + ')\n';
+};
+
+Blockly.Blocks['roboeyes_set_space_between'] = {
+  init: function () {
+    this.jsonInit({
+	  "colour": '#5d2c91',
+	  "tooltip": "Thiết lập khoảng trống giữa 2 mắt",
+	  "message0": "Thiết lập khoảng trống giữa 2 mắt %1",
+	  "args0": [
+	    {
+		  "type": "input_value",
+		  "name": "SPACE",
+		  "check": "Number"
+	    }
+	  ],
+	  "previousStatement": null,
+	  "nextStatement": null,	  
+	  "helpUrl": ""
+    });
+  }
+};
+
+Blockly.Python['roboeyes_set_space_between'] = function (block) {
+  var space = Blockly.Python.valueToCode(block, 'SPACE', Blockly.Python.ORDER_ATOMIC);
+  return 'eyes.set_space_between(' + space + ')\n';
+};
+
 Blockly.Python['roboeyes_update'] = function (block) {    
   var code = 'eyes.update()\n';
   return code;
