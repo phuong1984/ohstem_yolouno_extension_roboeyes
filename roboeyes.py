@@ -1,3 +1,4 @@
+from ssd1306 import *
 import time
 import random
 
@@ -26,9 +27,10 @@ W  = 7   # west, middle left
 NW = 8   # north-west, top left
 
 class RoboEyes:
-    def __init__(self, display, screen_width=128, screen_height=64, frame_rate=50):
+    def __init__(self, screen_width=128, screen_height=64, frame_rate=50):
         # Basic display properties and frame rate settings
-        self.display = display
+        self.oled = SSD1306_I2C()
+        self.oled.fill(0)
         self.screen_width = screen_width
         self.screen_height = screen_height
         self.frame_interval = 1000 // frame_rate  # in milliseconds
@@ -131,8 +133,8 @@ class RoboEyes:
     def begin(self, width, height, frame_rate):
         self.screen_width = width
         self.screen_height = height
-        self.display.fill(BGCOLOR)
-        self.display.show()
+        self.oled.fill(BGCOLOR)
+        self.oled.show()
         self.eyeLheight_current = 1
         self.eyeRheight_current = 1
         self.set_framerate(frame_rate)
@@ -274,7 +276,7 @@ class RoboEyes:
         self.laugh = True
 
     def draw_horizontal_line(self, x, y, length, color):
-        self.display.fill_rect(x, y, length, 1, color)
+        self.oled.fill_rect(x, y, length, 1, color)
 
     def fill_circle(self, x0, y0, r, color):
         x = 0
@@ -297,9 +299,9 @@ class RoboEyes:
             self.draw_horizontal_line(x0 - y, y0 - x, 2 * y + 1, color)
 
     def fill_round_rect(self, x, y, w, h, r, color):
-        self.display.fill_rect(x + r, y, w - 2 * r, h, color)
-        self.display.fill_rect(x, y + r, r, h - 2 * r, color)
-        self.display.fill_rect(x + w - r, y + r, r, h - 2 * r, color)
+        self.oled.fill_rect(x + r, y, w - 2 * r, h, color)
+        self.oled.fill_rect(x, y + r, r, h - 2 * r, color)
+        self.oled.fill_rect(x + w - r, y + r, r, h - 2 * r, color)
         self.fill_circle(x + r, y + r, r, color)
         self.fill_circle(x + w - r - 1, y + r, r, color)
         self.fill_circle(x + r, y + h - r - 1, r, color)
@@ -333,7 +335,7 @@ class RoboEyes:
         for scanline_y in range(y0, y1 + 1):
             start_x = int(min(curx1, curx2))
             end_x = int(max(curx1, curx2))
-            self.display.fill_rect(start_x, scanline_y, end_x - start_x + 1, 1, color)
+            self.oled.fill_rect(start_x, scanline_y, end_x - start_x + 1, 1, color)
             curx1 += inv_slope1
             curx2 += inv_slope2
 
@@ -345,7 +347,7 @@ class RoboEyes:
         for scanline_y in range(y2, y0 - 1, -1):
             start_x = int(min(curx1, curx2))
             end_x = int(max(curx1, curx2))
-            self.display.fill_rect(start_x, scanline_y, end_x - start_x + 1, 1, color)
+            self.oled.fill_rect(start_x, scanline_y, end_x - start_x + 1, 1, color)
             curx1 -= inv_slope1
             curx2 -= inv_slope2
 
@@ -440,7 +442,7 @@ class RoboEyes:
             self.eyeRheight_current = 0
             self.space_between_current = 0
 
-        self.display.fill(BGCOLOR)
+        self.oled.fill(BGCOLOR)
 
         # Use a threshold to force border radius to 0 until at least a quarter of the eye is open,
         # and also during a blink when the target height is 1.
@@ -511,4 +513,4 @@ class RoboEyes:
                                  (self.eyeRy + self.eyeRheight_current) - self.eyelids_happy_bottom_offset + 1,
                                  self.eyeRwidth_current + 2, self.eyeRheight_default,
                                  self.eyeRborder_radius_current, BGCOLOR)
-        self.display.show()
+        self.oled.show()

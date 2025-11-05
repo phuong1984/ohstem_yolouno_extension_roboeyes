@@ -50,10 +50,8 @@ Blockly.Blocks['roboeyes_create'] = {
 };
 
 Blockly.Python['roboeyes_create'] = function (block) {
-  Blockly.Python.definitions_['import_oled'] = 'from ssd1306 import *';
   Blockly.Python.definitions_['import_roboeyes'] = 'from roboeyes import RoboEyes';
-  Blockly.Python.definitions_['init_oled'] = 'oled = SSD1306_I2C()';
-  Blockly.Python.definitions_['init_roboeyes'] = 'eyes = RoboEyes(oled)';
+  Blockly.Python.definitions_['init_roboeyes'] = 'eyes = RoboEyes()';
   var width = Blockly.Python.valueToCode(block, 'WIDTH', Blockly.Python.ORDER_ATOMIC);
   var height = Blockly.Python.valueToCode(block, 'HEIGHT', Blockly.Python.ORDER_ATOMIC);
   var framerate = Blockly.Python.valueToCode(block, 'FRAMERATE', Blockly.Python.ORDER_ATOMIC);
